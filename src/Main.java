@@ -16,8 +16,6 @@ public class Main {
      * Asks for the choice of the user
      */
     public static void main(String[] args) {
-
-        System.out.println();
         System.out.println("╔═══════════════════════════════════════════════════════════════╗");
         System.out.println("║ > Press '1' to Show a Test Run                                ║");
         System.out.println("╚═══════════════════════════════════════════════════════════════╝");
@@ -53,7 +51,7 @@ public class Main {
                 //examples/maze10_1.txt
                 System.out.println("Reading the test file examples/maze10_1.txt...");
                 System.out.println();
-                String filepath = "examples/puzzle_2560.txt";
+                String filepath = "examples/maze10_1.txt";
                 BufferedReader bufferedReader = null;
                 try {
                     bufferedReader = new BufferedReader(new FileReader(filepath));
@@ -75,6 +73,43 @@ public class Main {
                 System.out.println("Execution time in nanoseconds: " + timeElapsed);
                 System.out.println("Execution time in milliseconds: " + TimeUnit.MILLISECONDS.convert(timeElapsed, TimeUnit.NANOSECONDS));
                 System.out.println("---------------------------------------------------------------------------");
+            }
+            case 2 -> {
+                boolean done = false;
+                while (!done) {
+                    try {
+                        System.out.print("Please enter the name of the folder where the file exists: ");
+                        String folder = input.next();
+                        System.out.println();
+                        System.out.print("Please enter the name of the file: ");
+                        String file2 = input.next();
+                        String filepath = folder + "/" + file2 + ".txt";
+                        System.out.println();
+                        System.out.println("Reading the file " + filepath + "...");
+                        System.out.println();
+                        BufferedReader bufferedReader = new BufferedReader(new FileReader(filepath));
+                        SlidingPuzzle puzzle2 = new SlidingPuzzle(bufferedReader,filepath, folder);
+                        System.out.println();
+                        System.out.println("---------------------------------------------------------------------------");
+                        System.out.println();
+                        System.out.println("Solving the puzzle...");
+                        System.out.println();
+                        System.out.println("Start at [" + puzzle2.beginNode[0] + "," + puzzle2.beginNode[1] + "]");
+                        long startTime = System.nanoTime();
+                        puzzle2.breadthFirstSearch();
+                        long endTime = System.nanoTime();
+                        // get the difference between the two nano time values
+                        long timeElapsed = endTime - startTime;
+                        System.out.println("Execution time in nanoseconds: " + timeElapsed);
+                        System.out.println("Execution time in milliseconds: " + TimeUnit.MILLISECONDS.convert(timeElapsed, TimeUnit.NANOSECONDS));
+                        System.out.println("---------------------------------------------------------------------------");
+                        done = true;
+
+                    } catch (FileNotFoundException e) {
+                        System.out.println("File not found! Please try again");
+                        System.out.println();
+                    }
+                }
             }
             default -> System.out.println("Input does not match! Please try again!");
         }

@@ -47,7 +47,7 @@ public class SlidingPuzzle extends Component {
                 // if the currentChar variable is equal to the letter "S"
                 // startNode variable is set to an array
                 // i represents the current position in the file
-                // j represents the the position of the first letter "S"
+                // j represents the position of the first letter "S"
                 if ( presentChar.equals("S")) {
                     beginNode = new int[]{x, y};
                 }
@@ -55,7 +55,7 @@ public class SlidingPuzzle extends Component {
                 // if the currentChar variable is equal to the letter "F"
                 // finishNode variable is set to an array
                 // i represents the current position in the file
-                // j represents the the position of the last letter "F"
+                // j represents the position of the last letter "F"
                 if ( presentChar.equals("F")) {
                     endNode = new int[]{x, y};
                 }
