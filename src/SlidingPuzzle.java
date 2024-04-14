@@ -277,7 +277,7 @@ public class SlidingPuzzle extends Component {
                 getPath(currentNode);
                 System.out.println();
                 System.out.println("Execution successfully completed!");
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                System.out.println("---------------------------------------------------------------------------");
                 break;
             } 
             else {
