@@ -6,14 +6,15 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    static Scanner input = new Scanner(System.in);
     static String filePath;
 
     /*
-     * Main method
-     * Display the menu method
-     * Displays the welcome message
-     * Asks for the choice of the user
+    -------------------------------------
+    | Main method                       |
+    | Display the menu method           |
+    | Displays the welcome message      |
+    | Asks for the choice of the user   |
+    -------------------------------------
      */
     public static void main(String[] args) {
         System.out.println("----------------------------------------------------------------------------");
@@ -31,7 +32,7 @@ public class Main {
         System.out.println();
         int x = puzzle.beginNode[0] + 1;
         int y = puzzle.beginNode[1] + 1;
-        System.out.println("Start at [" + x + "," + y + "]");
+        System.out.println("1.\tStart at [" + x + "," + y + "]");
         long startTime = System.nanoTime();
         puzzle.breadthFirstSearch();
         long endTime = System.nanoTime();

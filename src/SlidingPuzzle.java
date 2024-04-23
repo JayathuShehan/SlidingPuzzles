@@ -46,16 +46,12 @@ public class SlidingPuzzle extends Component {
 
                 // if the currentChar variable is equal to the letter "S"
                 // startNode variable is set to an array
-                // i represents the current position in the file
-                // j represents the position of the first letter "S"
                 if ( presentChar.equals("S")) {
                     beginNode = new int[]{x, y};
                 }
 
                 // if the currentChar variable is equal to the letter "F"
                 // finishNode variable is set to an array
-                // i represents the current position in the file
-                // j represents the position of the last letter "F"
                 if ( presentChar.equals("F")) {
                     endNode = new int[]{x, y};
                 }
@@ -265,18 +261,19 @@ public class SlidingPuzzle extends Component {
         queue.enqueue(Start);
         // adds start to allNodes list
         allNodes.add(Start);
+        int stepCount = 1;
 
         // while the queue is not empty it will dequeue the currentNode and process it
         while (!queue.isEmpty()) {
 
             Node currentNode = queue.dequeue();
-
             // checks if the coordinates of the current node is same as the finish node
             if (Arrays.equals(currentNode.coordinatesArray, endNode)) {
+
                 // prints the path to the current node
-                getPath(currentNode);
+                getPath(currentNode, stepCount);
                 System.out.println();
-                System.out.println("Execution successfully completed!");
+                System.out.println("Done");
                 System.out.println("---------------------------------------------------------------------------");
                 break;
             } 
@@ -285,19 +282,31 @@ public class SlidingPuzzle extends Component {
                 getAdjacency(currentNode);
                 queue.enqueueAll(currentNode);
             }
+            // increment the move number after processing each node
+            stepCount++;
         }
     }
 
-    public void getPath(Node node) {
+    public void getPath(Node node, int stepCount) {
         if (node.preNode != null) {
-            // if previousNode is not null, it gets the path from the current node to the previous node
-            getPath(node.preNode);
-            // prints to the user to move to the previous node in the direction to the given coordinates
-            int x = node.coordinatesArray[0] + 1;
-            int y = node.coordinatesArray[1] + 1;
-            System.out.println("Move " + node.preNodeDir + " to " + "(" + x + ", " + y + ")");
+            // Recursively call getPath first
+            getPath(node.preNode, stepCount + 1);
+
+            // Calculate the coordinates (x, y) for the current node
+            int x = node.coordinatesArray[1] + 1;
+            int y = node.coordinatesArray[0] + 1;
+
+            if (stepCount == 1) {
+                // For the first move, display "Start at" instead of "Move"
+                System.out.println(stepCount + ". Start at (" + x + ", " + y + ")");
+            } else {
+                // Display the move number and the direction to move along with the coordinates
+                System.out.println(stepCount + ". Move " + node.preNodeDir + " to (" + x + ", " + y + ")");
+            }
         }
     }
+
+
 
     public void readFile(BufferedReader bufferedReader) {
         // initializing a list to store the lines of the text file
