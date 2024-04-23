@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -16,9 +15,9 @@ public class Main {
      * Asks for the choice of the user
      */
     public static void main(String[] args) {
-        System.out.println("╔═══════════════════════════════════════════════════════════════╗");
-        System.out.println("║                        SLIDING PUZZLES                        ║");
-        System.out.println("╚═══════════════════════════════════════════════════════════════╝");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("|                             SLIDING PUZZLES                              |");
+        System.out.println("----------------------------------------------------------------------------");
 
         System.out.println("Reading the test file examples/maze10_1.txt...");
         System.out.println();
