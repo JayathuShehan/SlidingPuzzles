@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class SlidingPuzzle extends Component {
     
     // Initializing variables
-    Queue queue = new Queue(20);                 // set the queue to puzzleQueue with a capacity of 20
+    Queue queue = new Queue(100);                 // set the queue to puzzleQueue with a capacity of 20
     String[][] puzzle;                                  // puzzle 2d array
     ArrayList<Node> allNodes = new ArrayList<>();       // array list to store the nodes
     long rows;                                          // no of rows
@@ -293,7 +293,9 @@ public class SlidingPuzzle extends Component {
             // if previousNode is not null, it gets the path from the current node to the previous node
             getPath(node.preNode);
             // prints to the user to move to the previous node in the direction to the given coordinates
-            System.out.println("Move " + node.preNodeDir + " to " + Arrays.toString(node.coordinatesArray));
+            int x = node.coordinatesArray[0] + 1;
+            int y = node.coordinatesArray[1] + 1;
+            System.out.println("Move " + node.preNodeDir + " to " + "(" + x + ", " + y + ")");
         }
     }
 

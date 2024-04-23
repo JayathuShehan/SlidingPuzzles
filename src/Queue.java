@@ -17,8 +17,9 @@ public class Queue {
     }
 
     /*
-     * enqueueAll method
-     * takes one argument which is node
+     ------------------------------------------------------
+     | enqueueAll method takes one argument which is node |
+     ------------------------------------------------------
      */
     public void enqueueAll(Node node) {
         
@@ -30,8 +31,10 @@ public class Queue {
     }
 
     /*
-     * enqueue method
-     */
+    ------------------
+    | enqueue method |
+    ------------------
+    */
     public void enqueue(Node data) {
 
         // if the queue is full
@@ -50,8 +53,10 @@ public class Queue {
     }
 
     /*
-     * dequeue method
-     */
+    ------------------
+    | dequeue method |
+    ------------------
+    */
     public Node dequeue() {
         if (isEmpty()) {
             System.out.println("Queue empty");
@@ -69,18 +74,22 @@ public class Queue {
     }
 
     /*
-     * isFull method
-     * returns true if the size of the queue is equal to the capacity
-     * False if less than the capacity
-     */
+    ------------------------------------------------------------------
+    | isFull method                                                  |
+    | returns true if the size of the queue is equal to the capacity |
+    | False if less than the capacity                                |
+    ------------------------------------------------------------------
+    */
     public boolean isFull() {
         return size == volume;
     }
 
     /*
-     * isEmpty method
-     * returns true if the size of the storage is equal to 0
-     * False if not equal to 0
+    -------------------------------------------------------------
+    | isEmpty method                                            |
+    | returns true if the size of the storage is equal to 0     |
+    | False if not equal to 0                                   |
+    -------------------------------------------------------------
      */
     public boolean isEmpty() {
         return size == 0;
