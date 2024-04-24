@@ -261,48 +261,39 @@ public class SlidingPuzzle extends Component {
         queue.enqueue(Start);
         // adds start to allNodes list
         allNodes.add(Start);
-        int stepCount = 1;
 
         // while the queue is not empty it will dequeue the currentNode and process it
         while (!queue.isEmpty()) {
 
             Node currentNode = queue.dequeue();
+
             // checks if the coordinates of the current node is same as the finish node
             if (Arrays.equals(currentNode.coordinatesArray, endNode)) {
-
                 // prints the path to the current node
-                getPath(currentNode, stepCount);
+                getPath(currentNode);
                 System.out.println();
                 System.out.println("Done");
                 System.out.println("---------------------------------------------------------------------------");
                 break;
-            } 
+            }
             else {
                 // else get adjacent node of the current node and queue it
                 getAdjacency(currentNode);
                 queue.enqueueAll(currentNode);
             }
-            // increment the move number after processing each node
-            stepCount++;
         }
     }
 
-    public void getPath(Node node, int stepCount) {
+    public void getPath(Node node) {
         if (node.preNode != null) {
             // Recursively call getPath first
-            getPath(node.preNode, stepCount + 1);
+            getPath(node.preNode);
 
             // Calculate the coordinates (x, y) for the current node
             int x = node.coordinatesArray[1] + 1;
             int y = node.coordinatesArray[0] + 1;
 
-            if (stepCount == 1) {
-                // For the first move, display "Start at" instead of "Move"
-                System.out.println(stepCount + ". Start at (" + x + ", " + y + ")");
-            } else {
-                // Display the move number and the direction to move along with the coordinates
-                System.out.println(stepCount + ". Move " + node.preNodeDir + " to (" + x + ", " + y + ")");
-            }
+            System.out.println("Move " + node.preNodeDir + " to (" + x + ", " + y + ")");
         }
     }
 

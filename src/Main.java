@@ -32,7 +32,7 @@ public class Main {
         System.out.println();
         int x = puzzle.beginNode[0] + 1;
         int y = puzzle.beginNode[1] + 1;
-        System.out.println("1.\tStart at [" + x + "," + y + "]");
+        System.out.println("Start at [" + x + "," + y + "]");
         long startTime = System.nanoTime();
         puzzle.breadthFirstSearch();
         long endTime = System.nanoTime();
@@ -61,7 +61,7 @@ public class Main {
         String filename = scanner.next();
         System.out.println("-----------------------------------------------");
 
-        filePath = "examples\\" + filename + ".txt";
+        filePath = "benchmark_series\\" + filename + ".txt";
 
         BufferedReader bufferedReader;
         try {
